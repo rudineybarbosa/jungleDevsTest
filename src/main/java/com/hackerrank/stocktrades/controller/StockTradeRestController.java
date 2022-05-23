@@ -22,6 +22,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.hackerrank.stocktrades.model.StockTrade;
 import com.hackerrank.stocktrades.service.StockTradeService;
+import com.hackerrank.stocktrades.validation.StockTypeValidator;
 
 
 @RestController
@@ -64,19 +65,19 @@ public class StockTradeRestController {
 	  
 	  @PostMapping
 	  @ResponseStatus(HttpStatus.CREATED)
-	  public StockTrade createStockTrade(@RequestBody StockTrade stockTrade) {
+	  public ResponseEntity<StockTrade> createStockTrade(@RequestBody StockTrade stockTrade) {
 		  if(stockTrade.getShares() < 1 || stockTrade.getShares() > 100 ) {
 			  
-			  throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+			  return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
 		  }
 
-		  if(!"buy".equals(stockTrade.getType().toLowerCase()) 
-				  && !"sell".equals(stockTrade.getType().toLowerCase())) {
-			  
-			  throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+		  if(!new StockTypeValidator().isValid(stockTrade.getType(), null)) {
+			  return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
 		  }
+	
+		  StockTrade createNewStockTrade = service.createNewStockTrade(stockTrade);
 		  
-		  return service.createNewStockTrade(stockTrade);
+		  return ResponseEntity.status(HttpStatus.CREATED).body(createNewStockTrade);
 	  }
 	  
 	  @DeleteMapping("/{id}")

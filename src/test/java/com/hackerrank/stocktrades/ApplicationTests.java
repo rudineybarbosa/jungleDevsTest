@@ -280,6 +280,15 @@ public class ApplicationTests {
                 1501522701000l);
         data.put("user25_sell_AAC", user25_sell_AAC);
 
+        StockTrade user28_sell_AAC = new StockTrade(
+        		"any",
+        		28,
+        		"AAC",
+        		12,
+        		111,
+        		1501522701000l);
+        data.put("user28_sell_AAC", user25_sell_AAC);
+
 
         return data;
     }
