@@ -34,7 +34,7 @@ The task is to implement a model for the trade object and the REST service that 
 
 - return a collection of all trades
 - the response code is 200, and the response body is an array of all trades objects ordered by their ids in increasing order
-- optionally accepts query parameters type and userId, for example `/trades/?type=buy&&userId=122`. All these parameters are optional. In case they are present, only objects matching the parameters must be returned.
+- optionally accepts query parameters type and userId, for example `/trades?type=buy&&userId=122`. All these parameters are optional. In case they are present, only objects matching the parameters must be returned.
 
 **GET** request to `/trades/<id>`:
 
