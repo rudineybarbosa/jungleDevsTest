@@ -82,15 +82,15 @@ public class StockTradeRestController {
 	  
 	  @DeleteMapping("/{id}")
 	  @ResponseStatus(HttpStatus.METHOD_NOT_ALLOWED)
-	  public void deleteStockTradeById(@PathVariable Integer id) {}
+	  public void deleteStockTradeById(@PathVariable Integer id) {throw new UnsupportedOperationException();}
 
 	  @PutMapping("/{id}")
 	  @ResponseStatus(HttpStatus.METHOD_NOT_ALLOWED)
-	  public void putStockTradeById(@PathVariable Integer id) {}
+	  public void putStockTradeById(@PathVariable Integer id) {throw new UnsupportedOperationException();}
 	  
 	  @PatchMapping("/{id}")
 	  @ResponseStatus(HttpStatus.METHOD_NOT_ALLOWED)
-	  public void patchStockTradeById(@PathVariable Integer id) {}
+	  public void patchStockTradeById(@PathVariable Integer id) {throw new UnsupportedOperationException();}
 	  
 	
 }

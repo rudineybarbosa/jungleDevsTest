@@ -38,7 +38,7 @@ class StockTradeServiceImpl implements StockTradeService {
   private List<StockTrade> filterByTypeByUserId(String type, String userId, List<StockTrade> all) {
 
 	  if((type == null || "".equals(type)) 
-			  && userId != null && !"".equals(Integer.valueOf(userId))) {
+			  && userId != null && !"".equals(userId.trim())) {
 
 		  return all.parallelStream().filter(
 				  stock -> 
@@ -47,7 +47,7 @@ class StockTradeServiceImpl implements StockTradeService {
 	  } 
 	  
 	  if(type != null && !"".equals(type) 
-			  && (userId == null || "".equals(Integer.valueOf(userId)))) {
+			  && (userId == null || "".equals(userId.trim()))) {
 
 		  return  all.parallelStream().filter(
 				  stock -> 
@@ -56,7 +56,7 @@ class StockTradeServiceImpl implements StockTradeService {
 	  } 
 
 	  if(type != null && !"".equals(type) 
-			  && userId != null && !"".equals(Integer.valueOf(userId))) {
+			  && userId != null && !"".equals(userId.trim())) {
 
 		  return  all.stream().filter(
 				  stock -> 
